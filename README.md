@@ -1,27 +1,53 @@
 # SimpleNgWidgets
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.14.
+> A collection of widgets for [Angular](http://angularjs.io/) applications.
 
-## Development server
+### [Demo](https://sclarke500.github.io/simple-ng-widgets-demo)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* simple-ng-dialog
 
-## Code scaffolding
+## Install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+npm i simple-ng-dialog
+```
 
-## Build
+## Usage
+app.module
+```javascript
+import { DialogService, DialogModule } from 'simple-ng-dialog';
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+app.component.html
+```html
+<sng-dialog-anchor defaultCaption="My Caption"></sng-dialog-anchor>
+```
 
-## Running unit tests
+in your component
+```html
+<sng-dialog *ngIf="showDialog" (close)="showDialog=false" (ok)="onOk($event)">Dialog 1 content</sng-dialog>
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+or in your code:
+```javascript
+import { DialogService } from 'simple-ng-dialog';
+...
+constructor (
+  private dialogService: DialogService,
+) { }
+...
+prompt() {
+  this.dialogService.prompt('My test prompt', 'Prompt caption');
+}
 
-## Running end-to-end tests
+confirm() {
+  this.dialogService.confirm('Are you sure?').then(resp => alert(resp));
+}
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+inputBox() {
+  this.dialogService.inputBox('Type some input', 'default val').then(v => {
+    alert('new value: ' + v);
+  })
+}
+```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
