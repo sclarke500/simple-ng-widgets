@@ -1,0 +1,56 @@
+.spinner-parent {
+  position: fixed;
+  z-index: 60;
+  display: inline-block;
+  width: 4em;
+  height: 4em;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.spinner {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.notification {
+  z-index: 50;
+  position: fixed;
+  left: 50%;
+  top: 16px;
+  transform: translateX(-50%);
+  display: flex;
+  background-color: #eae99d;
+  color: #222;
+  border-radius: 3px;
+  box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+
+.notification>.notification-content {
+  padding: 10px 32px 10px 50px;
+}
+
+.notification>.notification-close {
+  padding: 3px 8px;
+  color: #888;
+  font-size: 12px;
+  font-weight: bold;
+}
+.notification>.notification-close:hover {
+  color: #000;
+  cursor: pointer;
+}
+
+
+
+

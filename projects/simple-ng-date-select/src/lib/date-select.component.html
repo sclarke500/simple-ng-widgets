@@ -1,0 +1,49 @@
+<div style='Position: relative; display: inline-block'>
+
+    <div class='container' [ngClass]='class'>
+      <input class='date-select full' [(ngModel)]='currentValue' (blur)='onBlur()'>
+      <!-- <span class='celendar' (click)='calendarClick()'>[c]</span> -->
+      <!-- icon license:  https://fontawesome.com/license -->
+      <svg (click)='calendarClick()' class="calendar" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"></path></svg>
+      <!-- <fa-icon class="calendar" [icon]="faCalendar" ></fa-icon> -->
+    </div>
+  
+    <div *ngIf='showCalendar'>
+  
+      <div class='calendar' [class.rightAlign]='rightAlign' #calendar tabindex='1' (focusout)='calendarFocusout()' (focusin)='calendarFocusin()'>
+  
+        <div class='flex'>
+          <span class='arrow' (click)='adjustMonth(-1)'>&lt;</span>
+          <div class='flex-1 center pt1'>
+            <select (change)='onDateChange()' [(ngModel)]='_month'>
+              <option *ngFor='let month of monthNames; let i = index' [value]='i'>
+                {{ month }}
+              </option>
+            </select>
+            <select (change)='onDateChange()' [(ngModel)]='_year'>
+              <option *ngFor='let year of availableYears' [ngValue]='year'>
+                {{ year }}
+              </option>
+            </select>
+          </div>
+          <span class='arrow' (click)='adjustMonth(1)'>&gt;</span>
+        </div>
+  
+        <table class='mt1'>
+          <thead>
+            <th *ngFor='let weekday of weekdays'>
+              {{ weekday }}
+            </th>
+          </thead>
+          <tr *ngFor='let week of calendarWeeks'>
+            <td *ngFor='let day of week' class='day' (click)='selectDate(day)' [class.today]='day.today'
+              [class.otherMonth]='!day.thisMonth'>
+              {{ day.day }}
+            </td>
+          </tr>
+        </table>
+  
+      </div>
+    </div>
+  
+  </div>

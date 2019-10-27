@@ -1,0 +1,18 @@
+<div class="overlay" [hidden]="!overlayService.overlayIndex" [style.zIndex]="overlayService.overlayIndex"></div>
+
+<div style="position: relative; z-index: 99">
+  <sng-dialog *ngIf="service.promptMessage" [showCancel]="false" (ok)="service.promptOk()" (close)="service.promptOk()"
+    [caption]="service.caption">
+    <div>{{ service.promptMessage }}</div>
+  </sng-dialog>
+  <sng-dialog *ngIf="service.inputPrompt" (ok)="service.inputOk()" (close)="service.inputClose()">
+    <div class="w4">
+      <div style="margin: 10px 0">{{ service.inputPrompt }}</div>
+      <input style="width: 100%" [(ngModel)]="service.inputValue" scAutoFocus>
+    </div>
+  </sng-dialog>
+  <sng-dialog *ngIf="service.confirmPrompt" (ok)="service.confirmYes()" (close)="service.confirmClose()"
+    cancelCaption="No" okCaption="Yes">
+    <div>{{ service.confirmPrompt }}</div>
+  </sng-dialog>
+</div>

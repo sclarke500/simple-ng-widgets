@@ -17,7 +17,27 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "simple-ng-dialog": [
+        "dist/simple-ng-dialog"
+      ],
+      "simple-ng-dialog/*": [
+        "dist/simple-ng-dialog/*"
+      ],
+      "simple-ng-notification": [
+        "dist/simple-ng-notification"
+      ],
+      "simple-ng-notification/*": [
+        "dist/simple-ng-notification/*"
+      ],
+      "simple-ng-date-select": [
+        "dist/simple-ng-date-select"
+      ],
+      "simple-ng-date-select/*": [
+        "dist/simple-ng-date-select/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

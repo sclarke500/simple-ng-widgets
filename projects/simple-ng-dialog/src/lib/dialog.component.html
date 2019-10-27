@@ -1,0 +1,18 @@
+<div class="dialog-box" #dialogBox [style.zIndex]="zIndex">
+  <div class="dialog-top" (mousedown)="trackMovement($event)">
+    <div class='caption'>{{ caption }}</div>
+    <div class="x" (click)="close.emit()">x</div>
+  </div>
+  <div [class.padded]="!custom">
+    <ng-content></ng-content>
+  </div>
+  <div class="buttons" *ngIf="!custom">
+    <div class="left">
+      <button type="button" class="delete" (click)="delete.emit()" *ngIf="showDelete">{{ deleteCaption }}</button>
+    </div>
+    <div class="right">
+      <button type="button" class="ok" (click)="ok.emit()">{{ okCaption }}</button>
+      <button type="button" class="cancel" *ngIf="showCancel" (click)="close.emit()">{{ cancelCaption }}</button>
+    </div>
+  </div>
+</div>

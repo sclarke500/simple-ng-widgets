@@ -1,0 +1,8 @@
+<div *ngIf='service.message' class='notification'>
+  <div class='notification-content'>{{ service.message }}</div>
+  <div class='notification-close' (click)='service.message=""'>x</div>
+</div>
+<div class='spinner-parent' *ngIf='service.busy'>
+  <div class="spinner"></div>
+</div>
+
