@@ -1,24 +1,43 @@
-# SimpleNgNotification
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.11.
+## simple-ng-notification
 
-## Code scaffolding
+> [Live demo here...](https://sclarke500.github.io/simple-ng-widgets-demo)
 
-Run `ng generate component component-name --project simple-ng-notification` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project simple-ng-notification`.
-> Note: Don't forget to add `--project simple-ng-notification` or else it will be added to the default project in your `angular.json` file. 
+### Install
 
-## Build
+```bash
+npm i simple-ng-notification
+```
 
-Run `ng build simple-ng-notification` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Usage
+app.module
+```javascript
+import { NotificationService, NotificationModule } from 'simple-ng-notification';
+```
 
-## Publishing
+add the notification anchor tag to app.component.html
+```html
+<sng-notification></sng-notification>
+```
 
-After building your library with `ng build simple-ng-notification`, go to the dist folder `cd dist/simple-ng-notification` and run `npm publish`.
+in your code:
+```javascript
+import { NotificationService } from 'simple-ng-notification';
+///
+constructor (
+  private notificationService: NotificationService,
+) { }
 
-## Running unit tests
+// displays a "test message" notification for 4 seconds
+notify() {
+  this.notificationService.notify('test message');
+}
 
-Run `ng test simple-ng-notification` to execute the unit tests via [Karma](https://karma-runner.github.io).
+// toggles a busy spinner in center of window
+_busy = false;
+busy() {
+  this._busy = !this._busy;
+  this.notificationService.busy = this._busy;
+}
+```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

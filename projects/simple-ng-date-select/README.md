@@ -1,24 +1,22 @@
-# SimpleNgDateSelect
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.11.
+## simple-ng-date-select
 
-## Code scaffolding
+> [Live demo here...](https://sclarke500.github.io/simple-ng-widgets-demo)
 
-Run `ng generate component component-name --project simple-ng-date-select` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project simple-ng-date-select`.
-> Note: Don't forget to add `--project simple-ng-date-select` or else it will be added to the default project in your `angular.json` file. 
+### Install
 
-## Build
+```bash
+npm i simple-ng-date-select
+```
 
-Run `ng build simple-ng-date-select` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Usage
+app.module
+```javascript
+import { DateSelectModule } from 'simple-ng-date-select';
+```
 
-## Publishing
-
-After building your library with `ng build simple-ng-date-select`, go to the dist folder `cd dist/simple-ng-date-select` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test simple-ng-date-select` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+in your component:
+```html
+<sng-date-select [(ngModel)]="myDate"></sng-date-select>
+<sng-date-select formControlName="birthdate"></sng-date-select>
+```
